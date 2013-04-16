@@ -1,0 +1,395 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     13091,        386]
+NotebookOptionsPosition[     12075,        347]
+NotebookOutlinePosition[     12420,        362]
+CellTagsIndexPosition[     12377,        359]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "[", "pts_", "]"}], ":=", 
+  RowBox[{"Count", "[", 
+   RowBox[{"pts", ",", 
+    RowBox[{"{", 
+     RowBox[{"_Real", ",", "_Real"}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"elem", "[", 
+   RowBox[{"pts_", ",", "i_", ",", "j_"}], "]"}], ":=", 
+  RowBox[{"If", "[", 
+   RowBox[{
+    RowBox[{"i", "<", "j"}], ",", "0", ",", 
+    RowBox[{"Product", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{"i", "-", "l"}], ")"}], "/", 
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"n", "[", "pts", "]"}], "-", "1"}], ")"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"l", ",", 
+        RowBox[{"j", "-", "1"}]}], "}"}]}], "]"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"A", "[", "pts_", "]"}], ":=", 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"elem", "[", 
+       RowBox[{"pts", ",", "j", ",", "i"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", 
+        RowBox[{"n", "[", "pts", "]"}]}], "}"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"j", ",", 
+      RowBox[{"n", "[", "pts", "]"}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"a", "[", "pts_", "]"}], ":=", 
+  RowBox[{"LinearSolve", "[", 
+   RowBox[{
+    RowBox[{"A", "[", "pts", "]"}], ",", "pts"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"monom", "[", 
+   RowBox[{"j_", ",", "t_", ",", "pts_"}], "]"}], ":=", 
+  "1"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"r", "[", 
+   RowBox[{"t_", ",", "pts_"}], "]"}], ":=", 
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"a", "[", "pts", "]"}], "\[LeftDoubleBracket]", "h", 
+      "\[RightDoubleBracket]"}], "*", 
+     RowBox[{"Product", "[", 
+      RowBox[{
+       RowBox[{"t", "-", 
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"k", "-", "1"}], ")"}], "/", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"n", "[", "pts", "]"}], "-", "1"}], ")"}]}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", 
+         RowBox[{"h", "-", "1"}]}], "}"}]}], "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{"h", ",", 
+      RowBox[{"n", "[", "pts", "]"}]}], "}"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"DynamicModule", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"pts", "=", 
+     RowBox[{"{", "}"}]}], "}"}], ",", 
+   RowBox[{"LocatorPane", "[", 
+    RowBox[{
+     RowBox[{"Dynamic", "[", "pts", "]"}], ",", 
+     RowBox[{"Dynamic", "[", 
+      RowBox[{"ParametricPlot", "[", 
+       RowBox[{
+        RowBox[{"r", "[", 
+         RowBox[{"t", ",", "pts"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+        RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}], "]"}], ",", 
+     RowBox[{"LocatorAutoCreate", "\[Rule]", "All"}]}], "]"}]}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.462026317234375*^9, 3.462026435015625*^9}, {
+   3.4620264736875*^9, 3.462026487515625*^9}, {3.462026517953125*^9, 
+   3.462026533359375*^9}, {3.462026616828125*^9, 3.46202661965625*^9}, {
+   3.462026729015625*^9, 3.462026782765625*^9}, {3.46202681334375*^9, 
+   3.462026860859375*^9}, {3.462027292859375*^9, 3.462027376859375*^9}, {
+   3.46202741234375*^9, 3.462027527546875*^9}, {3.462027572609375*^9, 
+   3.462027589484375*^9}, {3.46202762159375*^9, 3.462027633078125*^9}, {
+   3.462027848*^9, 3.46202786525*^9}, {3.462027925421875*^9, 
+   3.462027927890625*^9}, {3.46202803640625*^9, 3.462028036578125*^9}, 
+   3.462636525296875*^9, {3.46263670815625*^9, 3.4626367464375*^9}, {
+   3.463038790359375*^9, 3.46303879875*^9}, {3.463038946171875*^9, 
+   3.463039012640625*^9}, {3.46303907625*^9, 3.46303912128125*^9}, {
+   3.46303940565625*^9, 3.463039422*^9}, {3.463040016265625*^9, 
+   3.463040053046875*^9}, {3.463040254*^9, 3.463040287703125*^9}, {
+   3.463040433734375*^9, 3.463040438125*^9}, {3.463040584875*^9, 
+   3.46304062434375*^9}, {3.463040850921875*^9, 3.46304097159375*^9}, {
+   3.463041039828125*^9, 3.46304113553125*^9}, {3.46304188325*^9, 
+   3.463041907359375*^9}, {3.463042054828125*^9, 3.463042061171875*^9}, {
+   3.463042114046875*^9, 3.46304213978125*^9}, 3.4630454608125*^9, {
+   3.463045677703125*^9, 3.46304579621875*^9}, 3.46304594040625*^9, {
+   3.463046123*^9, 3.463046191796875*^9}, {3.463046916703125*^9, 
+   3.46304695428125*^9}, {3.463046986921875*^9, 3.46304702646875*^9}, {
+   3.46304713040625*^9, 3.463047224640625*^9}, {3.463047256890625*^9, 
+   3.463047304109375*^9}, {3.463047515234375*^9, 3.4630475871875*^9}, {
+   3.463047621234375*^9, 3.46304764534375*^9}, {3.46304774040625*^9, 
+   3.46304774253125*^9}, {3.46304778653125*^9, 3.463047805390625*^9}, {
+   3.463047838*^9, 3.46304790190625*^9}, {3.463048065359375*^9, 
+   3.463048078953125*^9}, {3.4630481543125*^9, 3.463048155046875*^9}, {
+   3.463048205328125*^9, 3.463048252546875*^9}, {3.463048293046875*^9, 
+   3.463048362796875*^9}, {3.463057697953125*^9, 3.463057742171875*^9}, {
+   3.463057907015625*^9, 3.4630580010625*^9}, {3.463058266265625*^9, 
+   3.463058268984375*^9}, {3.4630584020625*^9, 3.4630584048125*^9}, {
+   3.46305843815625*^9, 3.46305844578125*^9}, {3.463058554671875*^9, 
+   3.4630586326875*^9}, {3.46305866396875*^9, 3.46305870584375*^9}, {
+   3.46305880628125*^9, 3.463058835390625*^9}, 3.4630592854375*^9}],
+
+Cell[BoxData[
+ DynamicModuleBox[{$CellContext`pts$$ = {}}, 
+  LocatorPaneBox[Dynamic[$CellContext`pts$$], 
+   DynamicBox[ToBoxes[
+     ParametricPlot[
+      $CellContext`r[$CellContext`t, $CellContext`pts$$], {$CellContext`t, 0, 
+       1}, Axes -> True], StandardForm],
+    ImageSizeCache->{360., {176., 180.}}],
+   LocatorAutoCreate->All],
+  DynamicModuleValues:>{}]], "Output",
+ CellChangeTimes->{
+  3.463057743640625*^9, {3.463057980609375*^9, 3.46305800196875*^9}, 
+   3.463058269890625*^9, 3.463058452609375*^9, 3.463058642*^9, 
+   3.463058706734375*^9, {3.463058813203125*^9, 3.463058837421875*^9}, 
+   3.46305913659375*^9, 3.463059286671875*^9, 3.463059325328125*^9, {
+   3.463059419109375*^9, 3.463059434875*^9}, 3.463059553109375*^9}]
+}, Open  ]],
+
+Cell[BoxData["Sum"], "Input",
+ CellChangeTimes->{{3.463039045609375*^9, 3.463039054203125*^9}}],
+
+Cell[BoxData["Product"], "Input",
+ CellChangeTimes->{{3.4630459466875*^9, 3.463045963484375*^9}}],
+
+Cell[BoxData[{"If", "\[IndentingNewLine]", "Count", "\[IndentingNewLine]", \
+"List", "\[IndentingNewLine]", "Array", "\[IndentingNewLine]", 
+ RowBox[{"ParametricPlot", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Sin", "[", "u", "]"}], ",", 
+     RowBox[{"Sin", "[", 
+      RowBox[{"2", "u"}], "]"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"u", ",", "0", ",", 
+     RowBox[{"2", "Pi"}]}], "}"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.463039131859375*^9, 3.46303913821875*^9}, {
+  3.463040734421875*^9, 3.4630407558125*^9}, {3.46304193828125*^9, 
+  3.46304193875*^9}, {3.463045494203125*^9, 3.463045495203125*^9}, {
+  3.463045763765625*^9, 3.463045765734375*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Sum", "[", 
+  RowBox[{
+   RowBox[{"f", "[", "i", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"i", ",", 
+     RowBox[{"{", 
+      RowBox[{"a", ",", "b", ",", "c"}], "}"}]}], "}"}]}], "]"}]], "Input",
+ CellID->173687268],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"f", "[", "a", "]"}], "+", 
+  RowBox[{"f", "[", "b", "]"}], "+", 
+  RowBox[{"f", "[", "c", "]"}]}]], "Output",
+ ImageSize->{114, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}},
+ CellID->286706567]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Count", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "a", ",", "2", ",", "a", ",", "a", ",", "1", ",", "c", ",", "b", ",", "3",
+      ",", "3"}], "}"}], ",", "_Real"}], "]"}]], "Input",
+ CellChangeTimes->{{3.463040840203125*^9, 3.4630408413125*^9}},
+ CellID->397086737],
+
+Cell[BoxData["0"], "Output",
+ CellChangeTimes->{3.463040842453125*^9},
+ ImageSize->{11, 15},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"LinearSolve", "[", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"1", ",", "0"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "2"}], "}"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", "y"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4630474865*^9, 3.46304749534375*^9}, {
+  3.46304757559375*^9, 3.4630475756875*^9}},
+ CellID->142520274],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"x", ",", 
+   FractionBox["y", "2"]}], "}"}]], "Output",
+ CellChangeTimes->{3.463047435796875*^9, 3.463047500328125*^9, 
+  3.46304757609375*^9},
+ ImageSize->{140, 33},
+ ImageMargins->{{0, 0}, {0, 0}},
+ ImageRegion->{{0, 1}, {0, 1}}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"r", "[", 
+    RowBox[{"t_", ",", "pts_"}], "]"}], ":=", 
+   RowBox[{"Sum", "[", 
+    RowBox[{
+     RowBox[{"monom", "[", 
+      RowBox[{"j", ",", "t", ",", "pts"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "pts"}], "}"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.463047549125*^9, 3.463047549453125*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"A", "[", "pts_", "]"}], ":=", 
+   RowBox[{"Array", "[", 
+    RowBox[{
+     RowBox[{"Array", "[", 
+      RowBox[{
+       RowBox[{"elem", "[", "pts", "]"}], ",", 
+       RowBox[{"n", "[", "pts", "]"}]}], "]"}], ",", 
+     RowBox[{"n", "[", "pts", "]"}]}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.463057884734375*^9, 3.463057885*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"r", "[", 
+    RowBox[{"t_", ",", "pts_"}], "]"}], ":=", 
+   RowBox[{
+    RowBox[{"a", "[", "pts", "]"}], ".", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Product", "[", 
+       RowBox[{
+        RowBox[{"t", "-", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{"k", "-", "1"}], ")"}], "/", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"n", "[", "pts", "]"}], "-", "1"}], ")"}]}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", 
+          RowBox[{"j", "-", "1"}]}], "}"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", 
+        RowBox[{"n", "[", "pts", "]"}]}], "}"}]}], "]"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.4630585480625*^9, 3.463058549625*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"DynamicModule", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pts", "=", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"1", ",", "1"}], "}"}]}], "}"}]}], "}"}], ",", 
+     RowBox[{"LocatorPane", "[", 
+      RowBox[{
+       RowBox[{"Dynamic", "[", "pts", "]"}], ",", 
+       RowBox[{"Dynamic", "[", 
+        RowBox[{"Row", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"ParametricPlot", "[", 
+            RowBox[{
+             RowBox[{"r", "[", 
+              RowBox[{"t", ",", "pts"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"t", ",", "0", ",", "1"}], "}"}], ",", 
+             RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}], ",", 
+           RowBox[{"A", "[", "pts", "]"}], ",", 
+           RowBox[{"n", "[", "pts", "]"}]}], "}"}], "]"}], "]"}], ",", 
+       RowBox[{"LocatorAutoCreate", "\[Rule]", "All"}]}], "]"}]}], "]"}], 
+   "\[IndentingNewLine]"}]}]], "Input",
+ CellChangeTimes->{{3.463058793453125*^9, 3.46305879384375*^9}}]
+},
+WindowSize->{615, 750},
+WindowMargins->{{58, Automatic}, {Automatic, 18}},
+FrontEndVersion->"7.0 for Microsoft Windows (32-bit) (November 10, 2008)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 5344, 127, 272, "Input"],
+Cell[5914, 151, 744, 15, 379, "Output"]
+}, Open  ]],
+Cell[6673, 169, 95, 1, 31, "Input"],
+Cell[6771, 172, 97, 1, 31, "Input"],
+Cell[6871, 175, 687, 15, 112, "Input"],
+Cell[CellGroupData[{
+Cell[7583, 194, 240, 8, 31, "Input",
+ CellID->173687268],
+Cell[7826, 204, 252, 8, 30, "Output",
+ CellID->286706567]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8115, 217, 299, 8, 31, "Input",
+ CellID->397086737],
+Cell[8417, 227, 157, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8611, 236, 417, 13, 31, "Input",
+ CellID->142520274],
+Cell[9031, 251, 271, 8, 45, "Output"]
+}, Open  ]],
+Cell[9317, 262, 392, 11, 52, "Input"],
+Cell[9712, 275, 404, 11, 52, "Input"],
+Cell[10119, 288, 793, 24, 72, "Input"],
+Cell[10915, 314, 1156, 31, 132, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
