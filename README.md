@@ -1,4 +1,4 @@
-Exercises-on-Mathematica-2009-2010
+Exercises on Mathematica (2009-2010)
 ==================================
 
 ## About
